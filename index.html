@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{{{title}}}</title>
+	<meta itemprop="name" content="{{{title}}}" />
+	<meta name="twitter:title" content="{{{title}}}" />
+	<meta property="og:title" content="{{{title}}}" />
+
+	<meta name="description" content="{{{description}}}" />
+	<meta itemprop="description" content="{{{description}}}" />
+	<meta name="twitter:description" content="{{{description}}}" />
+	<meta property="og:description" content="{{{description}}}" />
+
+	<meta itemprop="image" content="{{{image}}}" />
+	<meta name="twitter:image:src" content="{{{image}}}" />
+	<meta property="og:image" content="{{{image}}}" />
+
+	<base href="/" />
+	<link rel="icon" type="image/x-icon" href="{{{variables.topbar_logo}}}" />
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/rohovskanika/css/bootstrap.min.css" rel="stylesheet" />
+	<!-- Custom CSS -->
+	<link href="/rohovskanika/css/theme.css" rel="stylesheet" />
+	<!-- Custom Fonts -->
+	<link href="/rohovskanika/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<style>
+		:root {
+			--primary_color: {{{variables.primary_color || "#d9ff00"}}};
+		}
+
+		.cart {
+			background: url({{{variables.bg_section}}})center;
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+}
+
+		body {
+			width: 100%;
+			height: 100%;
+			font-family: Open Sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color: #fff;
+			background: url({{{variables.bg_section}}})center;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-weight: 300;
+		}
+
+		.intro {
+			width: 100%;
+			padding: 400px 0 350px 0;
+			color: #ffffff;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background: url({{{variables.intro_bg}}}) center;
+		}
+	</style>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand page-scroll" href="/" style="padding-top:25px">
+					{{{variables.logo_text}}}
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+				<ul class="nav navbar-nav">
+					{% for tag in tags %}
+					<li style="padding-top:10px">
+						<a href="/{{{tag.category.group}}}s/{{{tag.id}}}">{{{tag.name}}}</a>
+					</li>
+					{% endfor %}
+			</ul>
+			<a href="/cart" id="cart" class="topbar__cart">
+				<svg width="30" height="30" viewBox="0 0 86 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M66.0008 27.1963H83.2208C83.9395 27.1963 84.6288 27.4818 85.137 27.9901C85.6453 28.4983 85.9308 29.1876 85.9308 29.9063C85.9308 45.413 85.9341 61.1163 85.9408 77.0163C85.9408 90.9963 78.8208 96.1863 65.5308 96.1863C50.8974 96.1863 36.2608 96.193 21.6208 96.2063C7.49078 96.2263 0.710781 90.6863 0.690781 76.1063C0.670781 60.693 0.670781 45.313 0.690781 29.9663C0.690781 29.2317 0.982621 28.5271 1.5021 28.0076C2.02157 27.4882 2.72613 27.1963 3.46078 27.1963H20.4408C20.5821 27.1967 20.7221 27.1679 20.8518 27.1118C20.9816 27.0557 21.0984 26.9735 21.195 26.8703C21.2916 26.7671 21.366 26.6452 21.4134 26.512C21.4609 26.3789 21.4804 26.2374 21.4708 26.0963C18.9408 -7.70367 68.1708 -7.55368 65.3008 26.4263C65.2924 26.5246 65.3044 26.6235 65.3358 26.7167C65.3672 26.81 65.4174 26.8955 65.4833 26.968C65.5491 27.0404 65.6292 27.0981 65.7183 27.1374C65.8074 27.1768 65.9036 27.1968 66.0008 27.1963ZM28.0308 27.1663L58.7508 27.2263C58.9842 27.2263 59.208 27.1336 59.373 26.9686C59.5381 26.8035 59.6308 26.5797 59.6308 26.3463L59.6408 23.2863C59.6449 21.0853 59.2324 18.905 58.427 16.87C57.6216 14.835 56.4391 12.9851 54.9468 11.426C53.4546 9.86691 51.6819 8.6291 49.73 7.78325C47.778 6.93741 45.6852 6.50011 43.5708 6.49632H43.2908C39.021 6.48865 34.9229 8.24694 31.8979 11.3844C28.873 14.5218 27.169 18.7815 27.1608 23.2263L27.1508 26.2863C27.1508 26.5197 27.2435 26.7435 27.4085 26.9086C27.5736 27.0736 27.7974 27.1663 28.0308 27.1663ZM62.0708 43.1463C61.4167 43.0796 60.8105 42.7739 60.3692 42.2883C59.9278 41.8026 59.6826 41.1713 59.6808 40.5163L59.6708 33.5963C59.6708 33.4239 59.6023 33.2586 59.4804 33.1367C59.3585 33.0148 59.1932 32.9463 59.0208 32.9463H27.9108C27.4574 32.9463 27.2241 33.173 27.2108 33.6263C27.1308 35.9663 28.4708 46.3363 22.2908 42.4863C22.0278 42.3209 21.811 42.092 21.6606 41.821C21.5102 41.5499 21.4312 41.2456 21.4308 40.9363V33.5663C21.4308 33.153 21.2208 32.9463 20.8008 32.9463H7.48078C6.80078 32.9463 6.46078 33.2863 6.46078 33.9663C6.45411 48.0397 6.48411 61.153 6.55078 73.3063C6.62078 85.9763 8.40078 90.3863 22.1808 90.4763C37.5874 90.563 52.9941 90.4963 68.4008 90.2763C76.7908 90.1463 80.1308 85.3363 80.1608 77.1663C80.2141 62.613 80.2108 48.0363 80.1508 33.4363C80.1508 33.3064 80.0992 33.1817 80.0073 33.0898C79.9154 32.998 79.7907 32.9463 79.6608 32.9463H66.1608C65.7075 32.9463 65.4708 33.1763 65.4508 33.6363C65.3608 36.3763 66.7708 43.6263 62.0708 43.1463Z" fill="black"/>
+					</svg>
+			</a>
+		</div>
+
+		<!-- /.navbar-collapse -->
+		</div>
+
+		<!-- /.container -->
+	</nav>
+	<!-- Intro Header -->
+
+	<main class="main-section">
+		<!-- HTML -->
+	</main>
+
+	<!-- Footer -->
+	<footer class="text-center text-lg-start text-white" style="background-color: #0d0d0d">
+		<!-- Grid container -->
+		<div class="container p-4 pb-0">
+			<!-- Section: Links -->
+			<section class="">
+				<!--Grid row-->
+				<div class="row">
+					<!--Grid column-->
+					<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">
+							<div class="logo">
+								<div class="logo-ft scroll-top"><em>{{{variables.logo_text}}}</em></div>
+							</div>
+						</h5>
+
+						<p class="logo">
+							{{{variables.ceo_text}}}
+						</p>
+					</div>
+					<!--Grid column-->
+
+					<!--Grid column-->
+					<!-- <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase"><a href="/articles">{{{translate("rohovskanika.Articles")}}}</a></h5>
+
+						<ul class="list-unstyled mb-0">
+							{% for article in articles %}
+							<li>
+								<a href="/article/{{{article.id}}}">{{{article.name}}}</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div> -->
+					<!--Grid column-->
+					{% if footer.contents.length %}
+					<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+						<h5 class="text-uppercase">{{{translate("rohovskanika.Contents")}}}</h5>
+						<ul class="list-unstyled mb-0">
+							{% for content in footer.contents %}
+							<li>
+								<a href="{{{content.url}}}">{{{content.name}}}</a>
+							</li>
+
+							{% endfor %}
+						</ul>
+					</div>
+						{% endif %}
+						<!--Grid column-->
+						<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+							<h5 class="text-uppercase"><a href="/products">{{{translate("rohovskanika.Products")}}}</a>
+							</h5>
+
+							<ul class="list-unstyled mb-0">
+								{% for product in products %}
+								<li>
+									<a href="/product/{{{product.id}}}">{{{product.name}}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+						<!--Grid column-->
+
+
+
+					</div>
+					<!--Grid row-->
+			</section>
+			<!-- Section: Links -->
+
+			<hr class="mb-4" />
+
+			<!-- Section: CTA -->
+			<section class="">
+				<p class="d-flex justify-content-center align-items-center">
+					<span class="me-3">{{{translate("rohovskanika.Register for free!")}}}</span>
+					<button type="button" class="btn btn-primary">
+						<a href="https://wawify.com/sign">Sign up!</a>
+					</button>
+				</p>
+			</section>
+			<!-- Section: CTA -->
+
+			<hr class="mb-4" />
+
+			<!-- Section: Social media -->
+			<div class="connect-us">
+				<a href="{{{variables.link_telegram}}}"><i class="fa fa-location-arrow"></i></a>
+				<a href="{{{variables.link_facebook}}}"><i class="fa fa-facebook"></i></a>
+				<a href="{{{variables.link_instagram}}}"><i class="fa fa-instagram"></i></a>
+				</li>
+			</div>
+		</div>
+
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); padding: 20px;">
+			© 2023 Copyright:
+			<a class="text-white" href="https://webart.work/">WAW</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<!-- jQuery -->
+	<script src="/rohovskanika/js/jquery.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/rohovskanika/js/bootstrap.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="/rohovskanika/js/jquery.easing.min.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="/rohovskanika/js/theme.js"></script>
+	<!-- Slider JavaScript -->
+	<script src="/rohovskanika/js/slider.js"></script>
+
+	<script type="module" src="/rohovskanika/js/index.js"></script>
+
+	
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+	<script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+</body>
+
+</html>
+
+<div style="display: none;" class="header__cart" id="template-cart">
+	<svg width="30" height="30" viewBox="0 0 86 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M66.0008 27.1963H83.2208C83.9395 27.1963 84.6288 27.4818 85.137 27.9901C85.6453 28.4983 85.9308 29.1876 85.9308 29.9063C85.9308 45.413 85.9341 61.1163 85.9408 77.0163C85.9408 90.9963 78.8208 96.1863 65.5308 96.1863C50.8974 96.1863 36.2608 96.193 21.6208 96.2063C7.49078 96.2263 0.710781 90.6863 0.690781 76.1063C0.670781 60.693 0.670781 45.313 0.690781 29.9663C0.690781 29.2317 0.982621 28.5271 1.5021 28.0076C2.02157 27.4882 2.72613 27.1963 3.46078 27.1963H20.4408C20.5821 27.1967 20.7221 27.1679 20.8518 27.1118C20.9816 27.0557 21.0984 26.9735 21.195 26.8703C21.2916 26.7671 21.366 26.6452 21.4134 26.512C21.4609 26.3789 21.4804 26.2374 21.4708 26.0963C18.9408 -7.70367 68.1708 -7.55368 65.3008 26.4263C65.2924 26.5246 65.3044 26.6235 65.3358 26.7167C65.3672 26.81 65.4174 26.8955 65.4833 26.968C65.5491 27.0404 65.6292 27.0981 65.7183 27.1374C65.8074 27.1768 65.9036 27.1968 66.0008 27.1963ZM28.0308 27.1663L58.7508 27.2263C58.9842 27.2263 59.208 27.1336 59.373 26.9686C59.5381 26.8035 59.6308 26.5797 59.6308 26.3463L59.6408 23.2863C59.6449 21.0853 59.2324 18.905 58.427 16.87C57.6216 14.835 56.4391 12.9851 54.9468 11.426C53.4546 9.86691 51.6819 8.6291 49.73 7.78325C47.778 6.93741 45.6852 6.50011 43.5708 6.49632H43.2908C39.021 6.48865 34.9229 8.24694 31.8979 11.3844C28.873 14.5218 27.169 18.7815 27.1608 23.2263L27.1508 26.2863C27.1508 26.5197 27.2435 26.7435 27.4085 26.9086C27.5736 27.0736 27.7974 27.1663 28.0308 27.1663ZM62.0708 43.1463C61.4167 43.0796 60.8105 42.7739 60.3692 42.2883C59.9278 41.8026 59.6826 41.1713 59.6808 40.5163L59.6708 33.5963C59.6708 33.4239 59.6023 33.2586 59.4804 33.1367C59.3585 33.0148 59.1932 32.9463 59.0208 32.9463H27.9108C27.4574 32.9463 27.2241 33.173 27.2108 33.6263C27.1308 35.9663 28.4708 46.3363 22.2908 42.4863C22.0278 42.3209 21.811 42.092 21.6606 41.821C21.5102 41.5499 21.4312 41.2456 21.4308 40.9363V33.5663C21.4308 33.153 21.2208 32.9463 20.8008 32.9463H7.48078C6.80078 32.9463 6.46078 33.2863 6.46078 33.9663C6.45411 48.0397 6.48411 61.153 6.55078 73.3063C6.62078 85.9763 8.40078 90.3863 22.1808 90.4763C37.5874 90.563 52.9941 90.4963 68.4008 90.2763C76.7908 90.1463 80.1308 85.3363 80.1608 77.1663C80.2141 62.613 80.2108 48.0363 80.1508 33.4363C80.1508 33.3064 80.0992 33.1817 80.0073 33.0898C79.9154 32.998 79.7907 32.9463 79.6608 32.9463H66.1608C65.7075 32.9463 65.4708 33.1763 65.4508 33.6363C65.3608 36.3763 66.7708 43.6263 62.0708 43.1463Z" fill="black"/>
+		</svg>
+	{counter}
+</div>

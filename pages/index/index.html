@@ -1,0 +1,62 @@
+<header class="intro">
+	<div class="intro-body">
+		<div class="intro-all">
+			<h1 class="brand-heading">{{{variables.land_head_text}}}</h1>
+			<p class="intro-text">
+				{{{variables.land_head_text2}}}
+			</p>
+		</div>
+	</div>
+	</div>
+</header>
+
+{% if variables.video %}
+<video controls class="video">
+	<source src="{{{variables.video}}}" type="video/mp4">
+</video>
+{% endif %}
+  
+<section id="page-sample">
+	{% if articles.length %}
+	<div class="polosa">
+		<div class="container content-section">
+			<h3>Articles</h3>
+			<div class="row">
+				{% for article in articles %}
+				<div class="col-md-4">
+					<a href="/articles">
+						<div class="card">
+							<img src="{{{article.thumb}}}" alt="{{{article.name}}}" class="img-rounded" style="min-height: 250px; min-width: 200px; max-height: 300px; object-fit: cover;">
+							<div class="card-body">
+								<h4 class="card-title">{{{article.name}}}</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+	{% if products.length %}
+	<div class="polosa">
+		<div class="container content-section">
+			<h3>Products</h3>
+			<div class="row">
+				{% for product in products %}
+				<div class="col-md-4">
+					<a href="/products">
+						<div class="card">
+							<img src="{{{product.thumb}}}" alt="{{{product.name}}}" class="img-rounded" style="min-height: 250px; min-width: 200px; max-height: 300px; object-fit: cover;">
+							<div class="card-body">
+								<h4 class="card-title">{{{product.name}}}</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+</section>
